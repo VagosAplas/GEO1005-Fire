@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DockWidget</class>
+ <widget class="QDockWidget" name="DockWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>559</width>
+    <height>747</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DockWidget</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <widget class="QTabWidget" name="tabWidgets">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>491</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="datatab">
+     <attribute name="title">
+      <string>data</string>
+     </attribute>
+     <widget class="QPushButton" name="openscenariobutton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Open Scenario</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="savescenariobutton">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>241</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save Scenario</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="selectlayerlabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select Layer:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="selectlayercombo">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>120</y>
+        <width>301</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="locatefirelabel">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>90</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <italic>true</italic>
+       </font>
+      </property>
+      <property name="text">
+       <string>Locate fire</string>
+      </property>
+     </widget>
+     <widget class="Line" name="locatefireline">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>90</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="clicklocatefirebutton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>220</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Click to locate fire</string>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="datatime">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>300</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="currentSection">
+       <enum>QDateTimeEdit::SecondSection</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select attribute:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>170</y>
+        <width>271</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="analysistab">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <attribute name="title">
+      <string>analysis</string>
+     </attribute>
+     <widget class="QPushButton" name="hydrantsbutton">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>10</y>
+        <width>121</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>hydrantsicon.png</normaloff>hydrantsicon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>120</width>
+        <height>120</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="shortestroutebutton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>480</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Shortest route</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cheanroutebutton">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>480</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clean route</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="smokebufferbutton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>171</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Smoke buffer</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="buildingbutton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>250</y>
+        <width>151</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>building.jpg</normaloff>building.jpg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="updatesmokebutton">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>170</y>
+        <width>191</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>update smoke buffer</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="networkbutton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>410</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Build network</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="networklabel">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>410</y>
+        <width>201</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Uses selected objects for fire station / fire location</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="analysistime">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>570</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="currentSection">
+       <enum>QDateTimeEdit::SecondSection</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="buildingypdate">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>270</y>
+        <width>151</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>update</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>481</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>380</y>
+        <width>531</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>reporting</string>
+     </attribute>
+     <widget class="QLabel" name="featurecounterlabel">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Feature counter:</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="featuretext">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="updatefeaturebutton">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>20</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="savepathtest">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>321</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="savepathbuton">
+      <property name="geometry">
+       <rect>
+        <x>332</x>
+        <y>57</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="savemapbutton">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>100</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save map</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="reportingtext1">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>150</y>
+        <width>431</width>
+        <height>141</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="reportingtext2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>300</y>
+        <width>431</width>
+        <height>141</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="reportingtime">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>470</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="currentSection">
+       <enum>QDateTimeEdit::SecondSection</enum>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="windbuttonGroup"/>
+ </buttongroups>
+</ui>
