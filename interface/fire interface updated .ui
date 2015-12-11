@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="datatab">
      <attribute name="title">
@@ -114,7 +114,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>220</y>
+        <y>490</y>
         <width>181</width>
         <height>51</height>
        </rect>
@@ -126,8 +126,8 @@
      <widget class="QTimeEdit" name="datatime">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>300</y>
+        <x>250</x>
+        <y>490</y>
         <width>151</width>
         <height>41</height>
        </rect>
@@ -139,11 +139,11 @@
        <enum>QDateTimeEdit::SecondSection</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="selectattributebutton">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>170</y>
+        <y>160</y>
         <width>151</width>
         <height>41</height>
        </rect>
@@ -226,9 +226,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>170</y>
-        <width>171</width>
-        <height>61</height>
+        <y>160</y>
+        <width>151</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -239,9 +239,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>250</y>
-        <width>151</width>
-        <height>121</height>
+        <y>270</y>
+        <width>131</width>
+        <height>101</height>
        </rect>
       </property>
       <property name="text">
@@ -262,9 +262,9 @@
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>170</y>
-        <width>191</width>
-        <height>61</height>
+        <y>160</y>
+        <width>171</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -316,8 +316,8 @@
      <widget class="QPushButton" name="buildingypdate">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>270</y>
+        <x>150</x>
+        <y>310</y>
         <width>151</width>
         <height>61</height>
        </rect>
@@ -350,6 +350,42 @@
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>220</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get buffer</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>230</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>240</y>
+        <width>72</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>meter</string>
       </property>
      </widget>
     </widget>
