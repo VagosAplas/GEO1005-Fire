@@ -65,6 +65,11 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.canvas = self.iface.mapCanvas()
 
         # set up GUI operation signals
+        # general
+        #self.firelocationbutton.clicked.connect(self.locatefire)
+        #self.policebutton.clicked.connect(self.locatefire)
+        #self.ambulancebutton.clicked.connect(self.locatefire)
+        #self.firetruckbutton.clicked.connect(self.opendatatab)
         # data
         self.iface.projectRead.connect(self.updateLayers)
         self.iface.newProjectCreated.connect(self.updateLayers)
@@ -104,8 +109,15 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         # set current UI restrictions
 
         # add button icons
-        self.medicButton.setIcon(QtGui.QIcon(':icons/medic_box.png'))
-        self.ambulanceButton.setIcon(QtGui.QIcon(':icons/ambulance.png'))
+        self.firelocationbutton.setIcon(QtGui.QIcon(':icons/FIRE.png'))
+        self.policebutton.setIcon(QtGui.QIcon(':icons/police-car2.png'))
+        self.ambulancebutton.setIcon(QtGui.QIcon(':icons/ambulance2.png'))
+        self.hydrantsbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon.png'))
+        self.cleanwatersourcebutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
+        self.smokebufferbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
+        self.buildingbutton.setIcon(QtGui.QIcon(':icons/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png'))
+
+
 
         # add matplotlib Figure to chartFrame
         self.chart_figure = Figure()
@@ -140,7 +152,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 #######
     def openScenario(self,filename=""):
         scenario_open = False
-        scenario_file = os.path.join('/Users/jorge/github/GEO1005','sample_data','time_test.qgs')
+        scenario_file = os.path.join('\Users\VagosAplas\Documents\GitHub\GEO1005-Fire','Project_data','Data.qgs')
         # check if file exists
         if os.path.isfile(scenario_file):
             self.iface.addProject(scenario_file)
