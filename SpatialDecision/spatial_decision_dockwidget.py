@@ -66,10 +66,17 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 
         # set up GUI operation signals
         # general
+<<<<<<< HEAD
         self.firelocationbutton.clicked.connect(self.locatefire)
         self.ambulancebutton.clicked.connect(self.locatefire)
         #self.firetruckbutton.clicked.connect(self.opendatatab)
 
+=======
+        #self.firelocationbutton.clicked.connect(self.locatefire)
+        #self.policebutton.clicked.connect(self.locatefire)
+        #self.ambulancebutton.clicked.connect(self.locatefire)
+        #self.firetruckbutton.clicked.connect(self.opendatatab)
+>>>>>>> d5c540840e373ac3bdf2c6d512a59dcf7d951013
         # data
         self.iface.projectRead.connect(self.updateLayers)
         self.iface.newProjectCreated.connect(self.updateLayers)
@@ -111,12 +118,22 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         # add button icons
         self.firelocationbutton.setIcon(QtGui.QIcon(':icons/FIRE.png'))
         self.policebutton.setIcon(QtGui.QIcon(':icons/police-car2.png'))
+<<<<<<< HEAD
         self.firetruckbutton.setIcon(QtGui.QIcon(':icons/1.png'))
         self.ambulancebutton.setIcon(QtGui.QIcon(':icons/ambulance2.png'))
         self.hydrantsbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon.png'))
         self.cleanwatersourcebutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
         self.smokebufferbutton.setIcon(QtGui.QIcon(':icons/Transparent_Smoke_Clipart_PNG_Image.png'))
         self.buildingbutton.setIcon(QtGui.QIcon(':icons/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png'))
+=======
+        self.ambulancebutton.setIcon(QtGui.QIcon(':icons/ambulance2.png'))
+        self.hydrantsbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon.png'))
+        self.cleanwatersourcebutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
+        self.smokebufferbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
+        self.buildingbutton.setIcon(QtGui.QIcon(':icons/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png'))
+
+
+>>>>>>> d5c540840e373ac3bdf2c6d512a59dcf7d951013
 
         # add matplotlib Figure to chartFrame
         #self.chart_figure = Figure()
@@ -161,7 +178,11 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 #######
     def openScenario(self,filename=""):
         scenario_open = False
+<<<<<<< HEAD
         scenario_file = os.path.join('I:\\academic\\geo1005\\GEO1005-Fire1\\Project_data_new','Data.qgs')
+=======
+        scenario_file = os.path.join('\Users\VagosAplas\Documents\GitHub\GEO1005-Fire','Project_data','Data.qgs')
+>>>>>>> d5c540840e373ac3bdf2c6d512a59dcf7d951013
         # check if file exists
         if os.path.isfile(scenario_file):
             self.iface.addProject(scenario_file)
