@@ -33,6 +33,8 @@ import os.path
 
 #change sys path to networkx package if not installed
 import sys
+reload(sys)
+sys.setdefaultencoding('cp1252')
 import inspect
 try:
     import networkx as nx

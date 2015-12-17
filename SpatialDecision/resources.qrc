@@ -1,7 +1,12 @@
 <RCC>
   <qresource prefix="/">
-    <file>icons/ambulance.png</file>
-    <file>icons/icon.png</file>
-    <file>icons/medic_box.png</file>
+    <file>icons/FIRE.png</file>
+    <file>icons/police-car2.png</file>
+    <file>icons/1.png</file>
+    <file>icons/ambulance2.png</file>
+    <file>icons/hydrantsicon.png</file>
+    <file>icons/hydrantsicon2.png</file>
+    <file>icons/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png</file>
+    <file>icons/Transparent_Smoke_Clipart_PNG_Image.png</file>
   </qresource>
 </RCC>

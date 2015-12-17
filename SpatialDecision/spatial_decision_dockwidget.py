@@ -41,7 +41,7 @@ from . import utility_functions as uf
 
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'spatial_decision_dockwidget_base.ui'))
+    os.path.dirname(__file__), 'fire_interface_updated.ui'))
 
 
 class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
@@ -65,57 +65,68 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.canvas = self.iface.mapCanvas()
 
         # set up GUI operation signals
+        # general
+        self.firelocationbutton.clicked.connect(self.locatefire)
+        self.ambulancebutton.clicked.connect(self.locatefire)
+        #self.firetruckbutton.clicked.connect(self.opendatatab)
+
         # data
         self.iface.projectRead.connect(self.updateLayers)
         self.iface.newProjectCreated.connect(self.updateLayers)
         self.iface.legendInterface().itemRemoved.connect(self.updateLayers)
         self.iface.legendInterface().itemAdded.connect(self.updateLayers)
-        self.openScenarioButton.clicked.connect(self.openScenario)
-        self.saveScenarioButton.clicked.connect(self.saveScenario)
-        self.selectLayerCombo.activated.connect(self.setSelectedLayer)
-        self.selectAttributeCombo.activated.connect(self.setSelectedAttribute)
+        self.openscenariobutton.clicked.connect(self.openScenario)
+        self.savescenariobutton.clicked.connect(self.saveScenario)
+        self.selectlayercombo.activated.connect(self.setSelectedLayer)
+        self.selectattributecombo.activated.connect(self.setSelectedAttribute)
 
         # analysis
         self.graph = QgsGraph()
         self.tied_points = []
-        self.setNetworkButton.clicked.connect(self.buildNetwork)
-        self.shortestRouteButton.clicked.connect(self.calculateRoute)
-        self.clearRouteButton.clicked.connect(self.deleteRoutes)
-        self.serviceAreaButton.clicked.connect(self.calculateServiceArea)
-        self.bufferButton.clicked.connect(self.calculateBuffer)
-        self.selectBufferButton.clicked.connect(self.selectFeaturesBuffer)
-        self.makeIntersectionButton.clicked.connect(self.calculateIntersection)
-        self.selectRangeButton.clicked.connect(self.selectFeaturesRange)
-        self.expressionSelectButton.clicked.connect(self.selectFeaturesExpression)
-        self.expressionFilterButton.clicked.connect(self.filterFeaturesExpression)
+        self.networkbutton.clicked.connect(self.buildNetwork)
+        #self.addobstaclesbutton.clicked.connect(self.addobstacles)
+        self.shortestroutebutton.clicked.connect(self.calculateRoute)
+        self.cheanroutebutton.clicked.connect(self.deleteRoutes)
+        #self.hydrantsbutton.clicked.connect(self.gethydrants)
+        #self.cleanwatersourcebutton.clicked.connect(self.cleanhydrants)
+        #self.smokebufferbutton.clicked.connect(self.smokebuffer)
+        #self.updatesmokebutton.clicked.connect(self.updatesmoke)
+        #self.buildingbutton.clicked.connect(self.getbuilding)
+        #self.buildingupdate.clicked.connect(self.updatebuilding)
 
         # visualisation
-        self.displayStyleButton.clicked.connect(self.displayBenchmarkStyle)
-        self.displayRangeButton.clicked.connect(self.displayContinuousStyle)
-        self.updateAttribute.connect(self.plotChart)
+        #self.displayStyleButton.clicked.connect(self.displayBenchmarkStyle)
+        #self.displayRangeButton.clicked.connect(self.displayContinuousStyle)
+        #self.updateAttribute.connect(self.plotChart)
 
         # reporting
-        self.featureCounterUpdateButton.clicked.connect(self.updateNumberFeatures)
-        self.saveMapButton.clicked.connect(self.saveMap)
-        self.saveMapPathButton.clicked.connect(self.selectFile)
-        self.updateAttribute.connect(self.extractAttributeSummary)
-        self.saveStatisticsButton.clicked.connect(self.saveTable)
+        self.updatefeaturebutton.clicked.connect(self.updateNumberFeatures)
+        self.savemapbutton.clicked.connect(self.saveMap)
+        self.savepathbuton.clicked.connect(self.selectFile)
+        #self.updateAttribute.connect(self.extractAttributeSummary)
+        #self.saveStatisticsButton.clicked.connect(self.saveTable)
 
         # set current UI restrictions
 
         # add button icons
-        self.medicButton.setIcon(QtGui.QIcon(':icons/medic_box.png'))
-        self.ambulanceButton.setIcon(QtGui.QIcon(':icons/ambulance.png'))
+        self.firelocationbutton.setIcon(QtGui.QIcon(':icons/FIRE.png'))
+        self.policebutton.setIcon(QtGui.QIcon(':icons/police-car2.png'))
+        self.firetruckbutton.setIcon(QtGui.QIcon(':icons/1.png'))
+        self.ambulancebutton.setIcon(QtGui.QIcon(':icons/ambulance2.png'))
+        self.hydrantsbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon.png'))
+        self.cleanwatersourcebutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
+        self.smokebufferbutton.setIcon(QtGui.QIcon(':icons/Transparent_Smoke_Clipart_PNG_Image.png'))
+        self.buildingbutton.setIcon(QtGui.QIcon(':icons/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png'))
 
         # add matplotlib Figure to chartFrame
-        self.chart_figure = Figure()
-        self.chart_subplot_hist = self.chart_figure.add_subplot(221)
-        self.chart_subplot_line = self.chart_figure.add_subplot(222)
-        self.chart_subplot_bar = self.chart_figure.add_subplot(223)
-        self.chart_subplot_pie = self.chart_figure.add_subplot(224)
-        self.chart_figure.tight_layout()
-        self.chart_canvas = FigureCanvas(self.chart_figure)
-        self.chartLayout.addWidget(self.chart_canvas)
+        #self.chart_figure = Figure()
+        #self.chart_subplot_hist = self.chart_figure.add_subplot(221)
+        #self.chart_subplot_line = self.chart_figure.add_subplot(222)
+        #self.chart_subplot_bar = self.chart_figure.add_subplot(223)
+        #self.chart_subplot_pie = self.chart_figure.add_subplot(224)
+        #self.chart_figure.tight_layout()
+        #self.chart_canvas = FigureCanvas(self.chart_figure)
+        #self.chartLayout.addWidget(self.chart_canvas)
 
         # initialisation
         self.updateLayers()
@@ -136,17 +147,27 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         event.accept()
 
 #######
+#   General functions
+#######
+    def locatefire(self,layer):
+        layer_name = "EVENT"
+        layer = uf.getLegendLayerByName(self.iface,layer_name)
+        self.updateAttributes(layer)
+
+    #def opendatatab(self,):
+
+#######
 #   Data functions
 #######
     def openScenario(self,filename=""):
         scenario_open = False
-        scenario_file = os.path.join('/Users/jorge/github/GEO1005','sample_data','time_test.qgs')
+        scenario_file = os.path.join('I:\\academic\\geo1005\\GEO1005-Fire1\\Project_data_new','Data.qgs')
         # check if file exists
         if os.path.isfile(scenario_file):
             self.iface.addProject(scenario_file)
             scenario_open = True
         else:
-            last_dir = uf.getLastDir("SDSS")
+            last_dir = uf.getLastDir("SDSS") #check this-----------------------------------------------------------------
             new_file = QtGui.QFileDialog.getOpenFileName(self, "", last_dir, "(*.qgs)")
             if new_file:
                 self.iface.addProject(new_file)
@@ -159,45 +180,45 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 
     def updateLayers(self):
         layers = uf.getLegendLayers(self.iface, 'all', 'all')
-        self.selectLayerCombo.clear()
+        self.selectlayercombo.clear()
         if layers:
             layer_names = uf.getLayersListNames(layers)
-            self.selectLayerCombo.addItems(layer_names)
+            self.selectlayercombo.addItems(layer_names)
             self.setSelectedLayer()
         else:
-            self.selectAttributeCombo.clear()
-            self.clearChart()
+            self.selectattributecombo.clear()
+            #self.clearChart()
 
 
     def setSelectedLayer(self):
-        layer_name = self.selectLayerCombo.currentText()
+        layer_name = self.selectlayercombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
         self.updateAttributes(layer)
 
     def getSelectedLayer(self):
-        layer_name = self.selectLayerCombo.currentText()
+        layer_name = self.selectlayercombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
         return layer
 
     def updateAttributes(self, layer):
-        self.selectAttributeCombo.clear()
+        self.selectattributecombo.clear()
         if layer:
-            self.clearReport()
-            self.clearChart()
+            #self.clearReport()
+            #self.clearChart()
             fields = uf.getFieldNames(layer)
             if fields:
-                self.selectAttributeCombo.addItems(fields)
+                self.selectattributecombo.addItems(fields)
                 self.setSelectedAttribute()
                 # send list to the report list window
-                self.updateReport(fields)
+                #self.updateReport(fields)
 
 
     def setSelectedAttribute(self):
-        field_name = self.selectAttributeCombo.currentText()
+        field_name = self.selectattributecombo.currentText()
         self.updateAttribute.emit(field_name)
 
     def getSelectedAttribute(self):
-        field_name = self.selectAttributeCombo.currentText()
+        field_name = self.selectattributecombo.currentText()
         return field_name
 
 #######
@@ -491,12 +512,12 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
             else:
                 self.clearChart()
 
-    def clearChart(self):
-        self.chart_subplot_hist.cla()
-        self.chart_subplot_line.cla()
-        self.chart_subplot_bar.cla()
-        self.chart_subplot_pie.cla()
-        self.chart_canvas.draw()
+    #def clearChart(self):
+        #self.chart_subplot_hist.cla()
+        #self.chart_subplot_line.cla()
+        #self.chart_subplot_bar.cla()
+        #self.chart_subplot_pie.cla()
+        #self.chart_canvas.draw()
 
 
 #######

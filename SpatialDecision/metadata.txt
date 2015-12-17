@@ -7,17 +7,17 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=SDSS Template
+name=FireSDSS
 qgisMinimumVersion=2.0
 description=This is a SDSS template for the GEO1005 course
 version=0.1
-author=Jorge Gil, TU Delft
-email=j.a.lopesgil@tudelft.nl
+author=E.Theocharous, M.S.Tryfona, Y.Xu, TU Delft
+email=eutheocharous@gmail.com, mayatryfona@hotmail.com, theajiao@gmail.com
 
-about=This plugin is a template Spatial Decision Support System, to be developed as a project for the GEO1005 course. It provides example of basic functionality to deal with data, spatial analysis and data visualisation.
+about=This plugin is a Spatial Decision Support System, to be developed as a project for the GEO1005 course. It was developed to provide information about a fire in the center of Delft. It specifically deals with data, spatial analysis and data visualisation for the fire brigades.
 
 tracker=https://github.com/jorgegil/GEO1005/issues
-repository=https://github.com/jorgegil/GEO1005
+repository=https://github.com/VagosAplas/GEO1005-Fire
 # End of mandatory metadata
 
 # Recommended items:
@@ -26,11 +26,11 @@ repository=https://github.com/jorgegil/GEO1005
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=
+tags=FIRE SDSS GEO1005 vector firebrigades TUDelft Delft
 
-homepage=https://github.com/jorgegil/GEO1005
+homepage=https://github.com/VagosAplas/GEO1005-Fire
 category=Plugins
-icon=/plugins/SpatialDecision/icons/icon.png
+icon=icons/FIRE.png
 # experimental flag
 experimental=True
 
