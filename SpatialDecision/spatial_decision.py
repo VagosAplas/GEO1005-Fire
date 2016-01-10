@@ -35,6 +35,7 @@ import os.path
 import sys
 reload(sys)
 sys.setdefaultencoding('cp1252')
+
 import inspect
 try:
     import networkx as nx
@@ -191,7 +192,7 @@ class SpatialDecision:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = self.plugin_dir + '/icons/icon.png'
+        icon_path = self.plugin_dir + '/icons/FIRE.png'
         self.add_action(
             icon_path,
             text=self.tr(u'SDSS Template'),

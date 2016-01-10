@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DockWidget</class>
- <widget class="QDockWidget" name="DockWidget">
+ <class>FireSDSS</class>
+ <widget class="QDockWidget" name="FireSDSS">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>515</width>
-    <height>741</height>
+    <width>516</width>
+    <height>755</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>DockWidget</string>
+   <string>FireSDSS</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <widget class="QTabWidget" name="Visualisation">
@@ -19,12 +19,24 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>491</width>
-      <height>681</height>
+      <width>501</width>
+      <height>701</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>501</width>
+      <height>701</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="generaltab">
      <property name="whatsThis">
@@ -36,60 +48,32 @@
      <attribute name="title">
       <string>General</string>
      </attribute>
-     <widget class="QLabel" name="ccslabel">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>10</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>13</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Command and Control System</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="firelabel">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>50</y>
-        <width>71</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>13</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>FIRE</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="firelocationbutton">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>110</y>
-        <width>211</width>
+        <x>110</x>
+        <y>120</y>
+        <width>241</width>
         <height>111</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>241</width>
+        <height>111</height>
+       </size>
       </property>
       <property name="font">
        <font>
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="layoutDirection">
        <enum>Qt::RightToLeft</enum>
@@ -98,11 +82,11 @@
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>Fire Location</string>
+       <string>      Fire Location</string>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>FIRE.png</normaloff>FIRE.png</iconset>
+        <normaloff>../interface/FIRE.png</normaloff>../interface/FIRE.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -114,17 +98,30 @@
      <widget class="QLabel" name="chooseservicelabel">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>40</x>
         <y>280</y>
         <width>251</width>
         <height>41</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>251</width>
+        <height>41</height>
+       </size>
+      </property>
       <property name="font">
        <font>
+        <pointsize>10</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Choose Service:</string>
@@ -133,18 +130,30 @@
      <widget class="QPushButton" name="policebutton">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>340</y>
+        <x>30</x>
+        <y>350</y>
         <width>121</width>
         <height>101</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>121</width>
+        <height>101</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>police-car2.png</normaloff>police-car2.png</iconset>
+        <normaloff>../interface/police-car2.png</normaloff>../interface/police-car2.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -156,18 +165,30 @@
      <widget class="QPushButton" name="firetruckbutton">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>340</y>
-        <width>131</width>
+        <x>170</x>
+        <y>350</y>
+        <width>121</width>
         <height>101</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>121</width>
+        <height>101</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>1.png</normaloff>1.png</iconset>
+        <normaloff>../interface/1.png</normaloff>../interface/1.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -179,18 +200,30 @@
      <widget class="QPushButton" name="ambulancebutton">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>340</y>
-        <width>131</width>
+        <x>310</x>
+        <y>350</y>
+        <width>121</width>
         <height>101</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>121</width>
+        <height>101</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>ambulance2.png</normaloff>ambulance2.png</iconset>
+        <normaloff>../interface/images.png</normaloff>../interface/images.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -208,8 +241,57 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>471</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="firelabel_2">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>30</y>
+        <width>360</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>360</width>
+        <height>71</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>COMMAND AND CONTROL SYSTEM
+          FIRE</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
       </property>
      </widget>
     </widget>
@@ -217,105 +299,120 @@
      <attribute name="title">
       <string>Data</string>
      </attribute>
-     <widget class="QPushButton" name="openscenariobutton">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>141</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Open Scenario</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="savescenariobutton">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>20</y>
-        <width>241</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Save Scenario</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="selectlayerlabel">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>120</y>
-        <width>111</width>
-        <height>41</height>
+        <x>20</x>
+        <y>30</y>
+        <width>181</width>
+        <height>31</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>181</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Select Layer:</string>
+       <string>Show selected Layer:</string>
       </property>
      </widget>
      <widget class="QComboBox" name="selectlayercombo">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>120</y>
-        <width>271</width>
+        <x>200</x>
+        <y>30</y>
+        <width>231</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>231</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="Line" name="locatefireline">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>411</width>
+        <x>0</x>
+        <y>200</y>
+        <width>481</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QTimeEdit" name="datatime">
+     <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>490</y>
-        <width>151</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="wrapping">
-       <bool>false</bool>
-      </property>
-      <property name="currentSection">
-       <enum>QDateTimeEdit::SecondSection</enum>
-      </property>
-     </widget>
-     <widget class="QLabel" name="selectattributelabel">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>160</y>
-        <width>151</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Select attribute:</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="selectattributecombo">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>170</y>
-        <width>271</width>
+        <x>20</x>
+        <y>150</y>
+        <width>181</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>181</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Clear selected layer:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="clearlayercombo">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>150</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>231</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -332,18 +429,30 @@
      <widget class="QPushButton" name="hydrantsbutton">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>180</y>
+        <x>30</x>
+        <y>220</y>
         <width>141</width>
         <height>121</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>141</width>
+        <height>121</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>hydrantsicon.png</normaloff>hydrantsicon.png</iconset>
+        <normaloff>../interface/hydrantsicon.png</normaloff>../interface/hydrantsicon.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -355,11 +464,23 @@
      <widget class="QPushButton" name="shortestroutebutton">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>100</y>
-        <width>181</width>
-        <height>51</height>
+        <x>30</x>
+        <y>110</y>
+        <width>161</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>161</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Shortest Route</string>
@@ -368,11 +489,23 @@
      <widget class="QPushButton" name="cheanroutebutton">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>100</y>
-        <width>191</width>
-        <height>51</height>
+        <x>260</x>
+        <y>110</y>
+        <width>171</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>171</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Clean Route</string>
@@ -381,18 +514,30 @@
      <widget class="QPushButton" name="smokebufferbutton">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>340</y>
+        <x>30</x>
+        <y>380</y>
         <width>141</width>
         <height>111</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>141</width>
+        <height>111</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>Transparent_Smoke_Clipart_PNG_Image.png</normaloff>Transparent_Smoke_Clipart_PNG_Image.png</iconset>
+        <normaloff>../interface/Transparent_Smoke_Clipart_PNG_Image.png</normaloff>../interface/Transparent_Smoke_Clipart_PNG_Image.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -404,18 +549,30 @@
      <widget class="QPushButton" name="buildingbutton">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>480</y>
+        <x>30</x>
+        <y>520</y>
         <width>141</width>
         <height>111</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>141</width>
+        <height>111</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>building-20clip-20art-12065771771975582164reporter_flat.svg.med.png</normaloff>building-20clip-20art-12065771771975582164reporter_flat.svg.med.png</iconset>
+        <normaloff>../interface/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png</normaloff>../interface/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -424,27 +581,26 @@
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="updatesmokebutton">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>370</y>
-        <width>171</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Update Smoke </string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="networkbutton">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>181</width>
-        <height>51</height>
+        <x>30</x>
+        <y>20</y>
+        <width>161</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>161</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Road Network</string>
@@ -454,23 +610,47 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>520</y>
-        <width>171</width>
-        <height>41</height>
+        <y>550</y>
+        <width>251</width>
+        <height>51</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>251</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Update Buildings</string>
+       <string>Update Threatened Area</string>
       </property>
      </widget>
      <widget class="Line" name="analysisline1">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>-10</x>
         <y>160</y>
-        <width>481</width>
+        <width>521</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>521</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -479,44 +659,80 @@
      <widget class="QLabel" name="getwatersourcelabel">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>310</y>
-        <width>141</width>
-        <height>16</height>
+        <x>30</x>
+        <y>340</y>
+        <width>151</width>
+        <height>21</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>151</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Get Water sources</string>
+       <string>Get Water Sources</string>
       </property>
      </widget>
      <widget class="QLabel" name="buildingindangerlable">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>600</y>
-        <width>181</width>
+        <x>30</x>
+        <y>630</y>
+        <width>171</width>
         <height>21</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>171</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Get Buildings in Danger</string>
+       <string>Get Threatened Area</string>
       </property>
      </widget>
      <widget class="QPushButton" name="cleanwatersourcebutton">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>180</y>
+        <x>260</x>
+        <y>220</y>
         <width>141</width>
         <height>121</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>141</width>
+        <height>121</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>hydrantsicon2.png</normaloff>hydrantsicon2.png</iconset>
+        <normaloff>../interface/hydrantsicon2.png</normaloff>../interface/hydrantsicon2.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -525,66 +741,169 @@
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="addobstaclesbutton">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>30</y>
-        <width>191</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add Obstacles</string>
-      </property>
-     </widget>
      <widget class="Line" name="analysisline2">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>320</y>
-        <width>511</width>
+        <x>-20</x>
+        <y>360</y>
+        <width>531</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>531</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QTimeEdit" name="analysitime">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>600</y>
-        <width>141</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>310</y>
-        <width>151</width>
-        <height>16</height>
+        <x>260</x>
+        <y>340</y>
+        <width>161</width>
+        <height>21</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>161</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Clean water sources</string>
+       <string>Clean Water Sources</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>450</y>
-        <width>171</width>
-        <height>16</height>
+        <x>30</x>
+        <y>490</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>71</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Get Smoke</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="bufferCutoffEdit">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>180</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>20</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>IBeamCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>100</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="getwatersourcelabel_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>180</y>
+        <width>271</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Define the Buffer for Hydrants:</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="reportList1">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>20</y>
+        <width>231</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>231</width>
+        <height>81</height>
+       </size>
+      </property>
+      <property name="cursor" stdset="0">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>380</y>
+        <width>301</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="text">
-       <string>Get Smoke Area</string>
+       <string>Download Time Manager
+
+Push the Play Button
+
+Check the Different Threatened
+Area During Time</string>
       </property>
      </widget>
     </widget>
@@ -592,166 +911,680 @@
      <attribute name="title">
       <string>Visualisation</string>
      </attribute>
-     <widget class="QTimeEdit" name="timeEdit">
+     <widget class="Line" name="line">
       <property name="geometry">
        <rect>
-        <x>327</x>
-        <y>571</y>
-        <width>141</width>
-        <height>31</height>
+        <x>0</x>
+        <y>470</y>
+        <width>491</width>
+        <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>491</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="Line" name="line_2">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>150</y>
-        <width>451</width>
-        <height>21</height>
+        <x>0</x>
+        <y>260</y>
+        <width>491</width>
+        <height>20</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Population needed evacuation</string>
+      <property name="minimumSize">
+       <size>
+        <width>491</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>270</y>
-        <width>221</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Fire Duration</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>390</y>
+        <x>250</x>
+        <y>520</y>
         <width>241</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>151</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Start of the Fire</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>461</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>461</width>
+        <height>141</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QListWidget" name="reportList_3">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>111</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="reportList_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>111</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>251</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>181</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Affected Building(s)</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="reportList_11">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>111</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>70</y>
+         <width>281</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>261</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Type of the Affected Building(s)</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>130</y>
+         <width>261</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>181</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Affected Population</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>290</y>
+        <width>461</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>451</width>
+        <height>141</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QListWidget" name="reportList_7">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>91</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="reportList_6">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>91</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>120</y>
+         <width>291</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>241</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Threatened Population (Night)</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>20</y>
+         <width>301</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>221</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Threatened Building(s)</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>70</y>
+         <width>311</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>231</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Threatened Population (Day)</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="reportList_5">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>91</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>500</y>
+        <width>461</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>441</width>
+        <height>101</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QListWidget" name="reportList_9">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>150</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>71</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="reportList_8">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>171</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>171</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="reportList_10">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>171</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>171</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::ListMode</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>70</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>201</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>End of the Fire</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="showinfo">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>10</y>
+        <width>311</width>
         <height>51</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>311</width>
+        <height>51</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Affected Buildings</string>
+       <string>Show Information about the Event</string>
       </property>
      </widget>
+     <zorder>frame_2</zorder>
+     <zorder>frame_3</zorder>
+     <zorder>frame</zorder>
+     <zorder>line</zorder>
+     <zorder>line_2</zorder>
+     <zorder>label_9</zorder>
+     <zorder>showinfo</zorder>
     </widget>
     <widget class="QWidget" name="reporting">
      <attribute name="title">
-      <string>Reporting</string>
+      <string>Save</string>
      </attribute>
-     <widget class="QLabel" name="featurecounterlabel">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>20</y>
-        <width>151</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Feature counter:</string>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="featuretext">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>20</y>
-        <width>191</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="updatefeaturebutton">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>20</y>
-        <width>91</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Update</string>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="savepathtest">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>60</y>
-        <width>321</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="savepathbuton">
-      <property name="geometry">
-       <rect>
-        <x>332</x>
-        <y>57</y>
-        <width>91</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>...</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="savemapbutton">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>100</y>
+        <x>230</x>
+        <y>40</y>
         <width>141</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>141</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Save map</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="reportingtext1">
+     <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>150</y>
-        <width>431</width>
-        <height>141</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="reportingtext2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>300</y>
-        <width>431</width>
-        <height>141</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTimeEdit" name="reportingtime">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>470</y>
-        <width>151</width>
+        <x>20</x>
+        <y>40</y>
+        <width>231</width>
         <height>41</height>
        </rect>
       </property>
-      <property name="wrapping">
-       <bool>false</bool>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+        <underline>true</underline>
+       </font>
       </property>
-      <property name="currentSection">
-       <enum>QDateTimeEdit::SecondSection</enum>
+      <property name="text">
+       <string>Save map as image:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>461</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>The map is saved under the Project folder.</string>
       </property>
      </widget>
     </widget>

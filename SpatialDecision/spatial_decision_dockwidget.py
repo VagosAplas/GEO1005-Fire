@@ -23,6 +23,7 @@
 
 from PyQt4 import QtGui, QtCore, uic
 from qgis.core import *
+from qgis.gui import *
 from qgis.networkanalysis import *
 import processing
 
@@ -66,50 +67,38 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 
         # set up GUI operation signals
         # general
-<<<<<<< HEAD
         self.firelocationbutton.clicked.connect(self.locatefire)
-        self.ambulancebutton.clicked.connect(self.locatefire)
-        #self.firetruckbutton.clicked.connect(self.opendatatab)
+        self.policebutton.clicked.connect(self.locatepolicestation)
+        self.firetruckbutton.clicked.connect(self.locatefirestation)
+        self.ambulancebutton.clicked.connect(self.locatehospital)
 
-=======
-        #self.firelocationbutton.clicked.connect(self.locatefire)
-        #self.policebutton.clicked.connect(self.locatefire)
-        #self.ambulancebutton.clicked.connect(self.locatefire)
-        #self.firetruckbutton.clicked.connect(self.opendatatab)
->>>>>>> d5c540840e373ac3bdf2c6d512a59dcf7d951013
         # data
         self.iface.projectRead.connect(self.updateLayers)
         self.iface.newProjectCreated.connect(self.updateLayers)
         self.iface.legendInterface().itemRemoved.connect(self.updateLayers)
         self.iface.legendInterface().itemAdded.connect(self.updateLayers)
-        self.openscenariobutton.clicked.connect(self.openScenario)
-        self.savescenariobutton.clicked.connect(self.saveScenario)
+        self.clearlayercombo.activated.connect(self.clearselectedlayer)
         self.selectlayercombo.activated.connect(self.setSelectedLayer)
-        self.selectattributecombo.activated.connect(self.setSelectedAttribute)
 
         # analysis
         self.graph = QgsGraph()
         self.tied_points = []
-        self.networkbutton.clicked.connect(self.buildNetwork)
-        #self.addobstaclesbutton.clicked.connect(self.addobstacles)
-        self.shortestroutebutton.clicked.connect(self.calculateRoute)
+        self.networkbutton.clicked.connect(self.getNetwork)
+        self.shortestroutebutton.clicked.connect(self.shortestroad)
         self.cheanroutebutton.clicked.connect(self.deleteRoutes)
-        #self.hydrantsbutton.clicked.connect(self.gethydrants)
-        #self.cleanwatersourcebutton.clicked.connect(self.cleanhydrants)
-        #self.smokebufferbutton.clicked.connect(self.smokebuffer)
-        #self.updatesmokebutton.clicked.connect(self.updatesmoke)
-        #self.buildingbutton.clicked.connect(self.getbuilding)
-        #self.buildingupdate.clicked.connect(self.updatebuilding)
+        self.hydrantsbutton.clicked.connect(self.gethydrants)
+        self.cleanwatersourcebutton.clicked.connect(self.cleanhydrants)
+        self.smokebufferbutton.clicked.connect(self.smokebuffer)
+        self.buildingbutton.clicked.connect(self.getintersectingbuildings)
+        self.buildingupdate.clicked.connect(self.updatebuilding)
 
         # visualisation
-        #self.displayStyleButton.clicked.connect(self.displayBenchmarkStyle)
-        #self.displayRangeButton.clicked.connect(self.displayContinuousStyle)
-        #self.updateAttribute.connect(self.plotChart)
+        # MAYA ----------------------------------------------
+        self.showinfo.clicked.connect(self.showinfooffire)
+        # ---------------------------------------------------
 
         # reporting
-        self.updatefeaturebutton.clicked.connect(self.updateNumberFeatures)
         self.savemapbutton.clicked.connect(self.saveMap)
-        self.savepathbuton.clicked.connect(self.selectFile)
         #self.updateAttribute.connect(self.extractAttributeSummary)
         #self.saveStatisticsButton.clicked.connect(self.saveTable)
 
@@ -118,37 +107,14 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         # add button icons
         self.firelocationbutton.setIcon(QtGui.QIcon(':icons/FIRE.png'))
         self.policebutton.setIcon(QtGui.QIcon(':icons/police-car2.png'))
-<<<<<<< HEAD
         self.firetruckbutton.setIcon(QtGui.QIcon(':icons/1.png'))
         self.ambulancebutton.setIcon(QtGui.QIcon(':icons/ambulance2.png'))
         self.hydrantsbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon.png'))
         self.cleanwatersourcebutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
         self.smokebufferbutton.setIcon(QtGui.QIcon(':icons/Transparent_Smoke_Clipart_PNG_Image.png'))
         self.buildingbutton.setIcon(QtGui.QIcon(':icons/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png'))
-=======
-        self.ambulancebutton.setIcon(QtGui.QIcon(':icons/ambulance2.png'))
-        self.hydrantsbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon.png'))
-        self.cleanwatersourcebutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
-        self.smokebufferbutton.setIcon(QtGui.QIcon(':icons/hydrantsicon2.png'))
-        self.buildingbutton.setIcon(QtGui.QIcon(':icons/building-20clip-20art-12065771771975582164reporter_flat.svg.med.png'))
 
 
->>>>>>> d5c540840e373ac3bdf2c6d512a59dcf7d951013
-
-        # add matplotlib Figure to chartFrame
-        #self.chart_figure = Figure()
-        #self.chart_subplot_hist = self.chart_figure.add_subplot(221)
-        #self.chart_subplot_line = self.chart_figure.add_subplot(222)
-        #self.chart_subplot_bar = self.chart_figure.add_subplot(223)
-        #self.chart_subplot_pie = self.chart_figure.add_subplot(224)
-        #self.chart_figure.tight_layout()
-        #self.chart_canvas = FigureCanvas(self.chart_figure)
-        #self.chartLayout.addWidget(self.chart_canvas)
-
-        # initialisation
-        self.updateLayers()
-
-        #run simple tests
 
     def closeEvent(self, event):
         # disconnect interface signals
@@ -166,29 +132,26 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 #######
 #   General functions
 #######
-    def locatefire(self,layer):
-        layer_name = "EVENT"
-        layer = uf.getLegendLayerByName(self.iface,layer_name)
-        self.updateAttributes(layer)
-
-    #def opendatatab(self,):
-
-#######
-#   Data functions
-#######
-    def openScenario(self,filename=""):
+    def locatefire(self,layer,filename=""):
         scenario_open = False
-<<<<<<< HEAD
-        scenario_file = os.path.join('I:\\academic\\geo1005\\GEO1005-Fire1\\Project_data_new','Data.qgs')
-=======
-        scenario_file = os.path.join('\Users\VagosAplas\Documents\GitHub\GEO1005-Fire','Project_data','Data.qgs')
->>>>>>> d5c540840e373ac3bdf2c6d512a59dcf7d951013
+        scenario_file = os.path.join('I:\\academic\\geo1005\\LAST\\GEO1005-Fire\\Project_data_new','Data.qgs')
         # check if file exists
         if os.path.isfile(scenario_file):
             self.iface.addProject(scenario_file)
+            aLayer = uf.getLegendLayerByName(self.iface,"EVENT")
+            blayer = uf.getLegendLayerByName(self.iface,"BUILDING")
+            clayer = uf.getLegendLayerByName(self.iface,"OBSTACLES")
+            dlayer = uf.getLegendLayerByName(self.iface, "Road")
+            layerriver = uf.getLegendLayerByName(self.iface, "River")
+            layerlist = [aLayer,blayer,clayer, dlayer,layerriver]
+            legend = self.iface.legendInterface()  # access the legend
+            layers = uf.getLegendLayers(self.iface, 'all', 'all')
+            # do something else
+            for layer1 in layerlist:
+                legend.setLayerVisible(layer1, True)  # show the layer
             scenario_open = True
         else:
-            last_dir = uf.getLastDir("SDSS") #check this-----------------------------------------------------------------
+            last_dir = uf.getLastDir("SDSS")
             new_file = QtGui.QFileDialog.getOpenFileName(self, "", last_dir, "(*.qgs)")
             if new_file:
                 self.iface.addProject(new_file)
@@ -196,16 +159,39 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         if scenario_open:
             self.updateLayers()
 
+    def locatefirestation(self):
+        firestation = uf.getLegendLayerByName(self.iface,"Fire_Station")
+        legend = self.iface.legendInterface()
+        legend.setLayerVisible(firestation, True)
+
+    def locatepolicestation(self):
+        firestation = uf.getLegendLayerByName(self.iface,"police_station")
+        legend = self.iface.legendInterface()
+        legend.setLayerVisible(firestation, True)
+
+    def locatehospital(self):
+        firestation = uf.getLegendLayerByName(self.iface,"hospital")
+        legend = self.iface.legendInterface()
+        legend.setLayerVisible(firestation, True)
+
+
+#######
+#   Data functions
+#######
+
     def saveScenario(self):
         self.iface.actionSaveProject()
 
     def updateLayers(self):
         layers = uf.getLegendLayers(self.iface, 'all', 'all')
         self.selectlayercombo.clear()
+        self.clearlayercombo.clear()
         if layers:
             layer_names = uf.getLayersListNames(layers)
             self.selectlayercombo.addItems(layer_names)
+            self.clearlayercombo.addItems(layer_names)
             self.setSelectedLayer()
+            self.clearselectedlayer()
         else:
             self.selectattributecombo.clear()
             #self.clearChart()
@@ -214,12 +200,25 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
     def setSelectedLayer(self):
         layer_name = self.selectlayercombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
+        legend = self.iface.legendInterface()  # access the legend
+        legend.setLayerVisible(layer, True)
         self.updateAttributes(layer)
 
     def getSelectedLayer(self):
         layer_name = self.selectlayercombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
         return layer
+
+    def clearselectedlayer(self):
+        layer_name = self.selectlayercombo.currentText()
+        namelist = ["Fire_Station","hospital","police_station","BUILDING","Road","Origin_Destination","Pedestrian",
+                    "River","FIRE_HYDRANT","OBSTACLES","SMOKE","EVENT","Water_Buffers"]
+        if layer_name in namelist:
+            layer = uf.getLegendLayerByName(self.iface,layer_name)
+            legend = self.iface.legendInterface()
+            legend.setLayerVisible(layer, False)
+            self.refreshCanvas(layer)
+
 
     def updateAttributes(self, layer):
         self.selectattributecombo.clear()
@@ -246,68 +245,124 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 #    Analysis functions
 #######
     # route functions
+    def tiepoints(self):
+
+        tiepointslayer= QgsMapLayerRegistry.instance().mapLayersByName("Origin_Destination")[0]
+        tiedpoints=[]
+        for f in tiepointslayer.getFeatures():
+            tiedpoints.append(f.geometry().asPoint())
+        return tiedpoints
+
     def getNetwork(self):
-        roads_layer = self.getSelectedLayer()
+
+        roads_layer = QgsMapLayerRegistry.instance().mapLayersByName("Road")[0]
+        path = "%s/styles/" % QgsProject.instance().homePath()
+        roads_layer.loadNamedStyle("%sroads.qml" % path)
+        roads_layer.triggerRepaint()
+        self.iface.legendInterface().refreshLayerSymbology(roads_layer)
+        self.canvas.refresh()
+
         if roads_layer:
             # see if there is an obstacles layer to subtract roads from the network
-            obstacles_layer = uf.getLegendLayerByName(self.iface, "Obstacles")
+            obstacles_layer = QgsMapLayerRegistry.instance().mapLayersByName("OBSTACLES")[0]
+            f = obstacles_layer.getFeatures()
+            lf = []
+            for i in f:
+                lf.append(i.geometry())
+
             if obstacles_layer:
                 # retrieve roads outside obstacles (inside = False)
                 features = uf.getFeaturesByIntersection(roads_layer, obstacles_layer, False)
                 # add these roads to a new temporary layer
                 road_network = uf.createTempLayer('Temp_Network','LINESTRING',roads_layer.crs().postgisSrid(),[],[])
                 road_network.dataProvider().addFeatures(features)
+                text = "%s obstacles found" % len(lf)
+                self.insertReport1(text)
             else:
                 road_network = roads_layer
             return road_network
         else:
             return
 
-    def buildNetwork(self):
-        self.network_layer = self.getNetwork()
-        if self.network_layer:
-            # get the points to be used as origin and destination
-            # in this case gets the centroid of the selected features
-            selected_sources = self.getSelectedLayer().selectedFeatures()
-            source_points = [feature.geometry().centroid().asPoint() for feature in selected_sources]
-            # build the graph including these points
-            if len(source_points) > 1:
-                self.graph, self.tied_points = uf.makeUndirectedGraph(self.network_layer, source_points)
-                # the tied points are the new source_points on the graph
-                if self.graph and self.tied_points:
-                    text = "network is built for %s points" % len(self.tied_points)
-                    self.insertReport(text)
-        return
+    def shortestroad(self):
+        graph = None
+        roads_layer =self.getNetwork()
+        points = self.tiepoints()
+        if roads_layer:
+            director = QgsLineVectorLayerDirector( roads_layer, -1, '', '', '', 3 )
+            properter = QgsDistanceArcProperter()
+            director.addProperter( properter )
+            builder = QgsGraphBuilder(roads_layer.crs())
+            pstart=points[0]
+            pend=points[1]
+            tiedPoints = director.makeGraph( builder, [ pstart, pend ] )
+            graph = builder.graph()
+            tstart = tiedPoints[ 0 ]
+            tend = tiedPoints[ 1 ]
+            idStart = graph.findVertex( tstart )
+            idStop = graph.findVertex( tend )
+            ( tree, cost ) = QgsGraphAnalyzer.dijkstra( graph, idStart, 0 )
+            if tree[ idStop ] == -1:
+                text= "Path not found"
+                self.insertReport1(text)
+            else:
+                p = []
+                curPos = idStop
+                while curPos != idStart:
+                    p.append( graph.vertex( graph.arc( tree[ curPos ] ).inVertex() ).point() )
+                    curPos = graph.arc( tree[ curPos ] ).outVertex()
+                p.append( tstart )
+                text= "Path found"
+                self.insertReport1(text)
+                routes_layer = uf.getLegendLayerByName(self.iface,"Shortest_Route")
+                # create one if it doesn't exist
+                if not routes_layer:
+                    attribs = ['id']
+                    types = [QtCore.QVariant.String]
+                    routes_layer = uf.createTempLayer('Shortest_Route','LINESTRING',roads_layer.crs().postgisSrid(), attribs, types)
+                    path = "%s/styles/" % QgsProject.instance().homePath()
+                    routes_layer.loadNamedStyle("%ssr.qml" % path)
+                    routes_layer.triggerRepaint()
+                    self.iface.legendInterface().refreshLayerSymbology(routes_layer)
+                    self.canvas.refresh()
+                    uf.loadTempLayer(routes_layer)
+                    routes_layer.setLayerName('Shortest_Route')
 
-    def calculateRoute(self):
-        # origin and destination must be in the set of tied_points
-        options = len(self.tied_points)
-        if options > 1:
-            # origin and destination are given as an index in the tied_points list
-            origin = 0
-            destination = random.randint(1,options-1)
-            # calculate the shortest path for the given origin and destination
-            path = uf.calculateRouteDijkstra(self.graph, self.tied_points, origin, destination)
-            # store the route results in temporary layer called "Routes"
-            routes_layer = uf.getLegendLayerByName(self.iface, "Routes")
-            # create one if it doesn't exist
-            if not routes_layer:
-                attribs = ['id']
-                types = [QtCore.QVariant.String]
-                routes_layer = uf.createTempLayer('Routes','LINESTRING',self.network_layer.crs().postgisSrid(), attribs, types)
-                uf.loadTempLayer(routes_layer)
-            # insert route line
-            uf.insertTempFeatures(routes_layer, [path], [['testing',100.00]])
-            self.refreshCanvas(routes_layer)
+                    legend = self.iface.legendInterface()
+                    legend.setLayerVisible(routes_layer, True)
+                    # insert route line
+
+                    uf.insertTempFeatures(routes_layer, [p], [['testing',100.00]])
+
+                else:
+                    legend = self.iface.legendInterface()
+                    legend.setLayerVisible(routes_layer, True)
+                    uf.loadTempLayer(routes_layer)
+
+                    uf.insertTempFeatures(routes_layer, [p], [['testing',100.00]])
+                    self.refreshCanvas(routes_layer)
+
+        rl = uf.getLegendLayerByName(self.iface,"Shortest_Route")
+        feature = rl.getFeatures()
+        list= []
+        for f in feature:
+            list.append(f.geometry())
+        text1 = "Route length is %s km " % round((list[0].length())*100.0,3)
+        self.insertReport1(text1)
+
 
     def deleteRoutes(self):
-        routes_layer = uf.getLegendLayerByName(self.iface, "Routes")
+        text3="route deleted"
+        self.insertReport1(text3)
+        routes_layer = uf.getLegendLayerByName(self.iface,"Shortest_Route")
         if routes_layer:
             ids = uf.getAllFeatureIds(routes_layer)
             routes_layer.startEditing()
             for id in ids:
                 routes_layer.deleteFeature(id)
             routes_layer.commitChanges()
+
+
 
     def getServiceAreaCutoff(self):
         cutoff = self.serviceAreaCutoffEdit.text()
@@ -344,7 +399,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
             uf.insertTempFeatures(area_layer, geoms, values)
             self.refreshCanvas(area_layer)
 
-    # buffer functions
+# buffer functions
     def getBufferCutoff(self):
         cutoff = self.bufferCutoffEdit.text()
         if uf.isNumeric(cutoff):
@@ -353,8 +408,8 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
             return 0
 
     def calculateBuffer(self):
-        origins = self.getSelectedLayer().selectedFeatures()
-        layer = self.getSelectedLayer()
+        layer = uf.getLegendLayerByName(self.iface, "EVENT")
+        origins = layer.getFeatures()
         if origins > 0:
             cutoff_distance = self.getBufferCutoff()
             buffers = {}
@@ -362,13 +417,17 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
                 geom = point.geometry()
                 buffers[point.id()] = geom.buffer(cutoff_distance,12).asPolygon()
             # store the buffer results in temporary layer called "Buffers"
-            buffer_layer = uf.getLegendLayerByName(self.iface, "Buffers")
+            buffer_layer = uf.getLegendLayerByName(self.iface, "Water_Buffers")
             # create one if it doesn't exist
             if not buffer_layer:
                 attribs = ['id', 'distance']
                 types = [QtCore.QVariant.String, QtCore.QVariant.Double]
-                buffer_layer = uf.createTempLayer('Buffers','POLYGON',layer.crs().postgisSrid(), attribs, types)
+                buffer_layer = uf.createTempLayer('Water_Buffers','POLYGON',layer.crs().postgisSrid(), attribs, types)
+                buffer_layer.setLayerName('Water_Buffers')
                 uf.loadTempLayer(buffer_layer)
+                legend = self.iface.legendInterface()
+                legend.setLayerVisible(buffer_layer, False)
+
             # insert buffer polygons
             geoms = []
             values = []
@@ -376,31 +435,118 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
                 # each buffer has an id and a geometry
                 geoms.append(buffer[1])
                 # in the case of values, it expects a list of multiple values in each item - list of lists
-                values.append([buffer[0],cutoff_distance])
+                values.append([buffer[0], cutoff_distance])
             uf.insertTempFeatures(buffer_layer, geoms, values)
             self.refreshCanvas(buffer_layer)
 
-    def calculateIntersection(self):
-        # use the buffer to cut from another layer
-        cutter = uf.getLegendLayerByName(self.iface, "Buffers")
-        # use the selected layer for cutting
-        layer = self.getSelectedLayer()
-        if cutter.featureCount() > 0:
-            # get the intersections between the two layers
-            intersection = processing.runandload('qgis:intersection',layer,cutter,None)
-            intersection_layer = uf.getLegendLayerByName(self.iface, "Intersection")
-            # prepare results layer
-            save_path = "%s/dissolve_results.shp" % QgsProject.instance().homePath()
-            # dissolve grouping by origin id
-            dissolve = processing.runandload('qgis:dissolve',intersection_layer,False,'id',save_path)
-            dissolved_layer = uf.getLegendLayerByName(self.iface, "Dissolved")
-            # close intersections intermediary layer
-            QgsMapLayerRegistry.instance().removeMapLayers([intersection_layer.id()])
+# VAGOS
+    def gethydrants(self):
+        hydrants_layer=uf.getLegendLayerByName(self.iface, "FIRE_HYDRANT")
+        self.calculateBuffer()
+        event_buffer = uf.getLegendLayerByName(self.iface,"Water_Buffers")
 
-            # add an 'area' field and calculate
-            # functiona can add more than one filed, therefore names and types are lists
-            uf.addFields(dissolved_layer, ["area"], [QtCore.QVariant.Double])
-            uf.updateField(dissolved_layer, "area","$area")
+        features=uf.getFeaturesByIntersection(hydrants_layer,event_buffer,True)
+        available_hydrant = uf.getLegendLayerByName(self.iface,"available_hydrants")
+
+        if not available_hydrant:
+            attribs=['id']
+            types=[QtCore.QVariant.Point]
+            available_hydrant=uf.createTempLayer('available_hydrants','Point',hydrants_layer.crs().postgisSrid(), attribs, types)
+
+            path = "%s/styles/" % QgsProject.instance().homePath()
+            available_hydrant.loadNamedStyle("%shydrants.qml" % path)
+            available_hydrant.triggerRepaint()
+            self.iface.legendInterface().refreshLayerSymbology(available_hydrant)
+            self.canvas.refresh()
+
+            uf.loadTempLayer(available_hydrant)
+            available_hydrant.setLayerName('available_hydrants')
+            legend = self.iface.legendInterface()
+            legend.setLayerVisible(available_hydrant, True)
+            available_hydrant.dataProvider().addFeatures(features)
+            available_hydrant = uf.getLegendLayerByName(self.iface,"available_hydrants")
+        else:
+            uf.loadTempLayer(available_hydrant)
+            available_hydrant.dataProvider().addFeatures(features)
+            self.refreshCanvas(available_hydrant)
+
+
+    def cleanhydrants(self):
+        ah = uf.getLegendLayerByName(self.iface,"available_hydrants")
+        event_buffer = uf.getLegendLayerByName(self.iface,"Water_Buffers")
+
+        if ah:
+            QgsMapLayerRegistry.instance().removeMapLayers( [ah.id()] )
+        if event_buffer:
+            QgsMapLayerRegistry.instance().removeMapLayers( [event_buffer.id()])
+    # -----------------
+
+# MAYA
+    def getintersectingbuildings(self):
+        building_layer=uf.getLegendLayerByName(self.iface, "BUILDING")
+        smoke_buffer = uf.getLegendLayerByName(self.iface,"SMOKE")
+        features=uf.getFeaturesByIntersection(building_layer,smoke_buffer,True)
+
+        threat_build = uf.getLegendLayerByName(self.iface, "THREATENED_BUILD")
+        if not threat_build:
+            attribs=['TYPE_BUILD','NUM_DAY','NUM_NIGHT']
+            types=[QtCore.QVariant.String, QtCore.QVariant.Double, QtCore.QVariant.Double]
+            threat_build = uf.createTempLayer("THREATENED_BUILD","POLYGON",building_layer.crs().postgisSrid(), attribs, types)
+            threat_build.setLayerName("THREATENED_BUILD")
+
+            uf.loadTempLayer(threat_build)
+            legend = self.iface.legendInterface()
+            legend.setLayerVisible(threat_build, True)
+            threat_build.dataProvider().addFeatures(features)
+            self.refreshCanvas(threat_build)
+
+        else:
+            threat_build.setLayerName("THREATENED_BUILD")
+            uf.loadTempLayer(threat_build)
+            threat_build.dataProvider().addFeatures(features)
+            self.refreshCanvas(threat_build)
+
+
+    def updatebuilding(self):
+        tb = uf.getLegendLayerByName(self.iface, "THREATENED_BUILD")
+        if tb:
+            ids = uf.getAllFeatureIds(tb)
+            tb.startEditing()
+            for id in ids:
+                tb.deleteFeature(id)
+            tb.commitChanges()
+
+        if tb:
+            building_layer=uf.getLegendLayerByName(self.iface, "BUILDING")
+            smoke_buffer = uf.getLegendLayerByName(self.iface,"SMOKE")
+            features=uf.getFeaturesByIntersection(building_layer,smoke_buffer,True)
+            uf.loadTempLayer(tb)
+            tb.dataProvider().addFeatures(features)
+            self.refreshCanvas(threat_build)
+
+
+    # SHOW THE SMOKE, NEED CORRECTION WITH TIME MANAGER
+    def smokebuffer(self):
+        smoke_buffer=uf.getLegendLayerByName(self.iface, "SMOKE")
+        legend = self.iface.legendInterface()  # access the legend
+        legend.setLayerVisible(smoke_buffer, True)
+        self.updateAttributes(smoke_buffer)
+
+    # NEED CORRECTIONS
+    def updatesmoke(self):
+        self.smokebuffer()
+
+    # CHANGE IT WITH THIS ONE??
+    def removesmoke(self):
+        ah = uf.getLegendLayerByName(self.iface, "SMOKE")
+        if ah:
+            ids = uf.getAllFeatureIds(ah)
+            ah.startEditing()
+            for id in ids:
+                ah.deleteFeature(id)
+            ah.commitChanges()
+            uf.loadTempLayer(ah)
+    # --------------------------------------------------------------------------
 
     # after adding features to layers needs a refresh (sometimes)
     def refreshCanvas(self, layer):
@@ -440,6 +586,120 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 #######
 #    Visualisation functions
 #######
+    # MAYA ----------------------------------------------
+    def insertAfBui(self,item):
+        self.reportList_3.insertItem(0, item)
+
+    def insertTyBui(self,item):
+        self.reportList_11.insertItem(0, item)
+
+    def insertAfPop(self,item):
+        self.reportList_4.insertItem(0, item)
+
+    def insertTrBui(self,item):
+        self.reportList_5.insertItem(0, item)
+
+    def insertTrPopD(self,item):
+        self.reportList_6.insertItem(0, item)
+
+    def insertTrPopN(self,item):
+        self.reportList_7.insertItem(0, item)
+
+    def insertStartFire(self,item):
+        self.reportList_8.insertItem(0, item)
+
+    def insertEndFire(self,item):
+        self.reportList_10.insertItem(0, item)
+
+    def showinfooffire(self):
+
+        #----------------------
+        self.reportList_3.clear()
+        layer_3=uf.getLegendLayerByName(self.iface, "EVENT")
+        lextext_3=uf.getFieldNames(layer_3)
+        fieldname_3=lextext_3[0]
+        extext_3=uf.getFieldValues(layer_3, fieldname_3, null=True, selection=False)
+        lextext_3=extext_3[0]
+        text_3=len(lextext_3)
+        self.insertAfBui(str(text_3))
+
+        #----------------------
+        self.reportList_11.clear()
+        layer_11=uf.getLegendLayerByName(self.iface, "EVENT")
+        lextext_11=uf.getFieldNames(layer_11)
+        fieldname_11=lextext_11[0]
+        extext_11=uf.getFieldValues(layer_11, fieldname_11, null=True, selection=False)
+        text_11=str(extext_11[0][0])
+        self.insertTyBui(text_11)
+
+        #-----------------------
+        self.reportList_4.clear()
+        layer_4=uf.getLegendLayerByName(self.iface, "EVENT")
+        lextext_4=uf.getFieldNames(layer_4)
+        fieldname_4=lextext_4[1]
+        extext_4=uf.getFieldValues(layer_4, fieldname_4, null=True, selection=False)
+        text_4=str(extext_4[0][0])
+        self.insertAfPop(text_4)
+
+        #------------------------
+        self.reportList_5.clear()
+        layer_5=uf.getLegendLayerByName(self.iface, "THREATENED_BUILD")
+        lextext_5=uf.getFieldNames(layer_5)
+        fieldname_5=lextext_5[0]
+        extext_5=uf.getFieldValues(layer_5, fieldname_5, null=True, selection=False)
+        lextext_5=len(extext_5[0])
+        text_5= str(lextext_5)
+
+        self.insertTrBui(text_5)
+
+        #------------------------
+        self.reportList_6.clear()
+        layer_6=uf.getLegendLayerByName(self.iface, "THREATENED_BUILD")
+        lextext_6=uf.getFieldNames(layer_6)
+        fieldname_6=lextext_6[1]
+        extext_6=uf.getFieldValues(layer_6, fieldname_6, null=True, selection=False)
+        numday2=0
+        for i in extext_6[0]:
+            numday2=(numday2)+int(i)
+
+
+        text_6= str(numday2)
+        self.insertTrPopD(text_6)
+
+        #----------------------------
+        self.reportList_7.clear()
+        layer_7=uf.getLegendLayerByName(self.iface, "THREATENED_BUILD")
+        lextext_7=uf.getFieldNames(layer_7)
+        fieldname_7=lextext_7[2]
+        extext_7=uf.getFieldValues(layer_7, fieldname_7, null=True, selection=False)
+        numnight3=0
+        for i in extext_7[0]:
+            numnight3=numnight3+int(i)
+
+
+        text_7=str(numnight3)
+
+        self.insertTrPopN(text_7)
+
+        #---------------------
+        self.reportList_8.clear()
+        layer_8=uf.getLegendLayerByName(self.iface, "EVENT")
+        lextext_8=uf.getFieldNames(layer_8)
+        fieldname_8=lextext_8[2]
+        extext_8=uf.getFieldValues(layer_8, fieldname_8, null=True, selection=False)
+        text_8=str(extext_8[0][0])
+        self.insertStartFire(text_8)
+
+        #-------------------------------
+        self.reportList_10.clear()
+        layer_10=uf.getLegendLayerByName(self.iface, "EVENT")
+        lextext_10=uf.getFieldNames(layer_10)
+        fieldname_10=lextext_10[3]
+        extext_10=uf.getFieldValues(layer_10, fieldname_10, null=True, selection=False)
+        text_10=str(extext_10[0][0])
+        self.insertEndFire(text_10)
+
+    # ---------------------------------------------------------------------------
     def displayBenchmarkStyle(self):
         # loads a predefined style on a layer.
         # Best for simple, rule based styles, and categorical variables
@@ -562,9 +822,8 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 
     # saving the current screen
     def saveMap(self):
-        filename = self.saveMapPathEdit.text()
-        if filename != '':
-            self.canvas.saveAsImage(filename,None,"PNG")
+        path = "%s/map.png" % QgsProject.instance().homePath()
+        self.canvas.saveAsImage(path,None,"PNG")
 
     def extractAttributeSummary(self, attribute):
         # get summary of the attribute
@@ -581,6 +840,9 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
     def updateReport(self,report):
         self.reportList.clear()
         self.reportList.addItems(report)
+
+    def insertReport1(self,item):
+        self.reportList1.insertItem(0, item)
 
     def insertReport(self,item):
         self.reportList.insertItem(0, item)

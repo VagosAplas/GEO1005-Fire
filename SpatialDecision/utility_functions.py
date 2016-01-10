@@ -522,7 +522,9 @@ def makeUndirectedGraph(network_layer, points=list):
         properter = QgsDistanceArcProperter()
         director.addProperter(properter)
         builder = QgsGraphBuilder(network_layer.crs())
-        tied_points = director.makeGraph(builder, points)
+        pstart=points[0]
+        pend=points[1]
+        tied_points = director.makeGraph(builder, [pstart,pend])
         graph = builder.graph()
     return graph, tied_points
 
@@ -599,6 +601,11 @@ def calculateRouteDijkstra(graph, tied_points, origin, destination, impedance=0)
 
                 points.append(from_point)
                 points.reverse()
+                rb = QgsRubberBand( qgis.utils.iface.mapCanvas() )
+                rb.setColor( Qt.red )
+
+                for pnt in points:
+                    rb.addPoint(pnt)
 
     return points
 
