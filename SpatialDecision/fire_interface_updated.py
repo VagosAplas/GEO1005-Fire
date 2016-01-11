@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'fire_interface_updated.ui'
 #
-# Created: Sun Jan 10 18:56:13 2016
+# Created: Mon Jan 11 13:29:41 2016
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -170,13 +170,13 @@ class Ui_FireSDSS(object):
         self.hydrantsbutton.setIconSize(QtCore.QSize(120, 120))
         self.hydrantsbutton.setObjectName(_fromUtf8("hydrantsbutton"))
         self.shortestroutebutton = QtGui.QPushButton(self.analysistab)
-        self.shortestroutebutton.setGeometry(QtCore.QRect(30, 110, 161, 41))
+        self.shortestroutebutton.setGeometry(QtCore.QRect(40, 20, 161, 41))
         self.shortestroutebutton.setMinimumSize(QtCore.QSize(161, 41))
         self.shortestroutebutton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.shortestroutebutton.setMouseTracking(True)
         self.shortestroutebutton.setObjectName(_fromUtf8("shortestroutebutton"))
         self.cheanroutebutton = QtGui.QPushButton(self.analysistab)
-        self.cheanroutebutton.setGeometry(QtCore.QRect(260, 110, 171, 41))
+        self.cheanroutebutton.setGeometry(QtCore.QRect(250, 20, 171, 41))
         self.cheanroutebutton.setMinimumSize(QtCore.QSize(171, 41))
         self.cheanroutebutton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.cheanroutebutton.setMouseTracking(True)
@@ -203,12 +203,6 @@ class Ui_FireSDSS(object):
         self.buildingbutton.setIcon(icon6)
         self.buildingbutton.setIconSize(QtCore.QSize(150, 100))
         self.buildingbutton.setObjectName(_fromUtf8("buildingbutton"))
-        self.networkbutton = QtGui.QPushButton(self.analysistab)
-        self.networkbutton.setGeometry(QtCore.QRect(30, 20, 161, 41))
-        self.networkbutton.setMinimumSize(QtCore.QSize(161, 41))
-        self.networkbutton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.networkbutton.setMouseTracking(True)
-        self.networkbutton.setObjectName(_fromUtf8("networkbutton"))
         self.buildingupdate = QtGui.QPushButton(self.analysistab)
         self.buildingupdate.setGeometry(QtCore.QRect(210, 550, 251, 51))
         self.buildingupdate.setMinimumSize(QtCore.QSize(251, 41))
@@ -267,19 +261,19 @@ class Ui_FireSDSS(object):
         self.label_5.setMouseTracking(True)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.bufferCutoffEdit = QtGui.QLineEdit(self.analysistab)
-        self.bufferCutoffEdit.setGeometry(QtCore.QRect(300, 180, 61, 21))
+        self.bufferCutoffEdit.setGeometry(QtCore.QRect(310, 180, 61, 21))
         self.bufferCutoffEdit.setMinimumSize(QtCore.QSize(20, 21))
         self.bufferCutoffEdit.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
         self.bufferCutoffEdit.setMouseTracking(True)
         self.bufferCutoffEdit.setObjectName(_fromUtf8("bufferCutoffEdit"))
         self.getwatersourcelabel_2 = QtGui.QLabel(self.analysistab)
-        self.getwatersourcelabel_2.setGeometry(QtCore.QRect(20, 180, 321, 21))
+        self.getwatersourcelabel_2.setGeometry(QtCore.QRect(30, 180, 271, 21))
         self.getwatersourcelabel_2.setMinimumSize(QtCore.QSize(100, 21))
         self.getwatersourcelabel_2.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.getwatersourcelabel_2.setMouseTracking(True)
         self.getwatersourcelabel_2.setObjectName(_fromUtf8("getwatersourcelabel_2"))
         self.reportList1 = QtGui.QListWidget(self.analysistab)
-        self.reportList1.setGeometry(QtCore.QRect(230, 20, 231, 81))
+        self.reportList1.setGeometry(QtCore.QRect(40, 70, 381, 81))
         self.reportList1.setMinimumSize(QtCore.QSize(231, 81))
         self.reportList1.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.reportList1.setMouseTracking(True)
@@ -287,6 +281,9 @@ class Ui_FireSDSS(object):
         self.label_25 = QtGui.QLabel(self.analysistab)
         self.label_25.setGeometry(QtCore.QRect(230, 380, 301, 111))
         self.label_25.setObjectName(_fromUtf8("label_25"))
+        self.label_14 = QtGui.QLabel(self.analysistab)
+        self.label_14.setGeometry(QtCore.QRect(390, 180, 41, 21))
+        self.label_14.setObjectName(_fromUtf8("label_14"))
         self.Visualisation.addTab(self.analysistab, _fromUtf8(""))
         self.visualizationtab = QtGui.QWidget()
         self.visualizationtab.setObjectName(_fromUtf8("visualizationtab"))
@@ -479,12 +476,12 @@ class Ui_FireSDSS(object):
         FireSDSS.setWidget(self.dockWidgetContents)
 
         self.retranslateUi(FireSDSS)
-        self.Visualisation.setCurrentIndex(3)
+        self.Visualisation.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(FireSDSS)
 
     def retranslateUi(self, FireSDSS):
         FireSDSS.setWindowTitle(_translate("FireSDSS", "FireSDSS", None))
-        self.firelocationbutton.setText(_translate("FireSDSS", "      Fire Location", None))
+        self.firelocationbutton.setText(_translate("FireSDSS", "    Fire Location", None))
         self.chooseservicelabel.setText(_translate("FireSDSS", "Choose Service:", None))
         self.firelabel_2.setText(_translate("FireSDSS", "COMMAND AND CONTROL SYSTEM\n"
 "          FIRE", None))
@@ -495,7 +492,6 @@ class Ui_FireSDSS(object):
         self.analysistab.setToolTip(_translate("FireSDSS", "<html><head/><body><p><br/></p></body></html>", None))
         self.shortestroutebutton.setText(_translate("FireSDSS", "Shortest Route", None))
         self.cheanroutebutton.setText(_translate("FireSDSS", "Clean Route", None))
-        self.networkbutton.setText(_translate("FireSDSS", "Road Network", None))
         self.buildingupdate.setText(_translate("FireSDSS", "Update Threatened Area", None))
         self.getwatersourcelabel.setText(_translate("FireSDSS", "Get Water Sources", None))
         self.buildingindangerlable.setText(_translate("FireSDSS", "Get Threatened Area", None))
@@ -509,6 +505,7 @@ class Ui_FireSDSS(object):
 "\n"
 "Check the Different Threatened\n"
 "Area During Time", None))
+        self.label_14.setText(_translate("FireSDSS", "m", None))
         self.Visualisation.setTabText(self.Visualisation.indexOf(self.analysistab), _translate("FireSDSS", "Analysis", None))
         self.label_9.setText(_translate("FireSDSS", "Start of the Fire", None))
         self.label_3.setText(_translate("FireSDSS", "Affected Building(s)", None))
@@ -519,7 +516,7 @@ class Ui_FireSDSS(object):
         self.label_7.setText(_translate("FireSDSS", "Threatened Population (Day)", None))
         self.label_2.setText(_translate("FireSDSS", "End of the Fire", None))
         self.showinfo.setText(_translate("FireSDSS", "Show Information about the Event", None))
-        self.Visualisation.setTabText(self.Visualisation.indexOf(self.visualizationtab), _translate("FireSDSS", "Visualisation", None))
+        self.Visualisation.setTabText(self.Visualisation.indexOf(self.visualizationtab), _translate("FireSDSS", "Reporting", None))
         self.savemapbutton.setText(_translate("FireSDSS", "Save map", None))
         self.label_10.setText(_translate("FireSDSS", "Save map as image:", None))
         self.label_12.setText(_translate("FireSDSS", "The map is saved under the Project folder.", None))
